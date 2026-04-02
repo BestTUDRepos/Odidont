@@ -1,0 +1,958 @@
+﻿[
+  {
+    "id": 1,
+    "title": "GDPR Basics",
+    "description": "Intro to GDPR",
+    "startNodeId": "Why",
+    "nodes": {
+      "Why": {
+        "id": "Why",
+        "type": "Content",
+        "content": "<h3>Why does GDPR exist?</h3> \n\n<p> GDPR exists to protect people's personal data, in a world where software systems constantly collect and process information about their users.</p>\n\n<p>Before GDPR, companies were able to: </p>\n<ul>\n <li>Collect extensive/unnecessary user data,</li>\n <li>Store it indefinitely,</li>\n <li>Share it without transparency.</li> </ul>\n<p>GDPR changes this, by enforcing transparency and responsibility. </p>\n\n\n<h3> How does this affect developers?</h3>\n\n<p>As a developer, you are often the one to:</p>\n\n<ul>\n <li>Design databases,</li>\n <li> Define APIs,</li>\n <li> Decide what user activity to log,</li>\n <li> Integrate third party systems</li> \n</ul>\n\n<p>This means that you are <b>directly influencing</b> if a system is compliant or not! Because of that, it is important you understand exactly what GDPR regulations entails. </p>",
+        "resources": [],
+        "nextNodeIds": ["Personal Data", "Quiz: GDPR Awareness"]
+      },
+      "Personal Data": {
+        "id": "Personal Data",
+        "type": "Content",
+        "content": "<h3> What is personal data? </h3>\n\n<p><b>Personal data</b> is any information which could identify a person, directly (e.g. name, phone number, email address) or indirectly (e.g. IP address, location data). </p>\n\n<h3> Practical Example</h3>\n<pre><code>{\n    \"username\": \"john123\",\n    \"ip\": \"192.168.1.1\",\n    \"lastLogin\": \"2026-03-30\"\n}</code></pre>\n\n<p> While <code>john123</code> is not a real name, the ip address combined with the user activity could identify an individual, making it <b>personal data.</b> </p>",
+        "resources": [],
+        "nextNodeIds": ["Special Data"]
+      },
+      "Special Data": {
+        "id": "Special Data",
+        "type": "Content",
+        "content": "<h3> What is special data? </h3>\n\n<p>Some data is more <b>sensitive</b>, making it more <b>strictly regulated.</b> GDPR Article 9 lists the following special categories: </p>\n\n<ul>\n\t<li>Racial or ethnic origin</li>\n\t<li>Political opinions</li>\n\t<li>Religious or philosophical beliefs</li>\n\t<li>Trade union membership</li>\n\t<li>Genetic data</li>\n\t<li>Biometric data</li>\n\t<li>Health data</li>\n\t<li>Sexual orientation</li>\n</ul>\n\n<p> Processing this kind of data is <b>prohibited by default</b> unless an Article 9 exception applies. If your system handles it, you need: </p>\n <ul>\n\t<li>Explicit consent or another valid exception</li>\n    <li>Higher security measures</li>\n    <li>A Data Protection Impact Assessment (DPIA)</li>\n</ul>",
+        "resources": [],
+        "nextNodeIds": ["Quiz: Personal and Special Data"]
+      },
+      "Quiz: GDPR Awareness": {
+        "id": "Quiz: GDPR Awareness",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "What is the main goal of the GDPR?",
+            "options": [
+              {
+                "text": "To protect people's personal data",
+                "isCorrect": true,
+                "explanation": "Correct. The GDPR was created to protect people's personal data and give them control over how it is collected and processed."
+              },
+              {
+                "text": "To prevent companies from collecting any data",
+                "isCorrect": false,
+                "explanation": "Incorrect. GDPR does not ban data collection. It regulates how personal data is collected and processed."
+              },
+              {
+                "text": "To make all user data publicly available",
+                "isCorrect": false,
+                "explanation": "Incorrect. GDPR aims to protect personal data, not make it public."
+              }
+            ]
+          },
+          {
+            "question": "Why should developers care about GDPR?",
+            "options": [
+              {
+                "text": "Developers decide what data to collect and how to store it",
+                "isCorrect": true,
+                "explanation": "Correct. Developers design databases, define APIs and decide what to log. These choices directly affect whether a system is GDPR compliant."
+              },
+              {
+                "text": "GDPR only applies to managers and legal teams",
+                "isCorrect": false,
+                "explanation": "Incorrect. GDPR affects everyone involved in building systems that handle personal data. Developers play a key role."
+              },
+              {
+                "text": "Developers are never held responsible for data handling",
+                "isCorrect": false,
+                "explanation": "Incorrect. Developers directly influence compliance through the systems they build. Poor design choices can lead to violations."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      },
+      "Quiz: Personal and Special Data": {
+        "id": "Quiz: Personal and Special Data",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "Which of the following is considered personal data under GDPR?",
+            "options": [
+              {
+                "text": "A user's IP address",
+                "isCorrect": true,
+                "explanation": "Correct. GDPR Article 4(1) defines personal data as any information that can identify a person directly or indirectly. An IP address is an online identifier that can be used to identify someone."
+              },
+              {
+                "text": "The name of a company",
+                "isCorrect": false,
+                "explanation": "Incorrect. A company name is not personal data. GDPR protects natural persons, not legal entities."
+              },
+              {
+                "text": "A public weather forecast",
+                "isCorrect": false,
+                "explanation": "Incorrect. A weather forecast does not relate to an identifiable person."
+              }
+            ]
+          },
+          {
+            "question": "A JSON object stores a username and an IP address. Is this personal data?",
+            "options": [
+              {
+                "text": "Yes, the combination can identify a person",
+                "isCorrect": true,
+                "explanation": "Correct. Even if a username is not a real name, the IP address combined with user activity can identify an individual. This makes the whole record personal data."
+              },
+              {
+                "text": "No, because a username is not a real name",
+                "isCorrect": false,
+                "explanation": "Incorrect. Personal data includes any information that could identify someone directly or indirectly. An IP address alone can qualify."
+              },
+              {
+                "text": "Only if the user gives consent",
+                "isCorrect": false,
+                "explanation": "Incorrect. Whether data counts as personal data does not depend on consent. It depends on whether the data can identify a person."
+              }
+            ]
+          },
+          {
+            "question": "Which of the following is a special category of data under GDPR Article 9?",
+            "options": [
+              {
+                "text": "Home address",
+                "isCorrect": false,
+                "explanation": "Incorrect. A home address is personal data but not a special category. Special categories are listed in Article 9 and include health data, genetic data, biometric data, racial/ethnic origin, political opinions, religious beliefs, trade union membership and sexual orientation."
+              },
+              {
+                "text": "Health data",
+                "isCorrect": true,
+                "explanation": "Correct. Health data is explicitly listed as a special category in Article 9 of the GDPR. Processing it is prohibited unless a specific exception applies."
+              },
+              {
+                "text": "Email address",
+                "isCorrect": false,
+                "explanation": "Incorrect. An email address is personal data but not a special category."
+              },
+              {
+                "text": "Phone number",
+                "isCorrect": false,
+                "explanation": "Incorrect. A phone number is personal data but not a special category."
+              }
+            ]
+          },
+          {
+            "question": "What extra requirement applies when processing special category data?",
+            "options": [
+              {
+                "text": "You need explicit consent or another Article 9 exception",
+                "isCorrect": true,
+                "explanation": "Correct. Processing special category data is prohibited by default. You need both a lawful basis under Article 6 and a separate condition under Article 9 (such as explicit consent) to process it."
+              },
+              {
+                "text": "You only need to encrypt it",
+                "isCorrect": false,
+                "explanation": "Incorrect. Encryption is a good security measure but it is not sufficient on its own. You need a valid legal basis and an Article 9 exception."
+              },
+              {
+                "text": "No extra requirements apply",
+                "isCorrect": false,
+                "explanation": "Incorrect. Special category data has stricter rules. Processing it without meeting Article 9 conditions is a violation."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Data Protection",
+    "description": "What are you supposed to do with all this data?",
+    "startNodeId": "A Checklist",
+    "nodes": {
+      "A Checklist": {
+        "id": "A Checklist",
+        "type": "Content",
+        "content": "<h3>GDPR Data Protection Principles</h3>\n\n<p>When working with personal data, GDPR defines a set of <b>core principles</b> that must guide your system design:</p>\n\n<ul>\n  <li><b>Lawfulness</b> - You must have a valid reason to process user data</li>\n  <li><b>Data Minimisation</b> - Only collect what you actually need</li>\n  <li><b>Integrity & Confidentiality</b> - Keep data secure</li>\n  <li><b>Accuracy</b> - Ensure data is correct and up to date</li>\n  <li><b>Accountability</b> - You are responsible for everything you do with data</li>\n</ul>\n\n<p>These principals directly affect how you design your systems, databases, APIs and much more!</p>",
+        "resources": [],
+        "nextNodeIds": ["Lawful", "Minimal", "Safe", "Accurate", "Liable", "Quiz: Core Principles"]
+      },
+      "Lawful": {
+        "id": "Lawful",
+        "type": "Content",
+        "content": "<h3>Lawfulness</h3>\n\n<p>You <b>cannot</b> collect or process data without a valid legal reason. This is called a <b>lawful basis</b>.</p>\n\n<p>Examples include:</p>\n\n<ul>\n  <li>User consent</li>\n  <li>Fulfilling a contract</li>\n  <li>Legal obligations</li>\n</ul>\n  \n<p><b>For the developer,</b> this means that each and every API endpoint or data field should have a clear reason to exist.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Minimal": {
+        "id": "Minimal",
+        "type": "Content",
+        "content": "<h3>Data Minimisation</h3>\n\n<p>You should only collect the data you actually need, and nothing more. </p>\n\n<p>Less data means:</p>\n<ul>\n  <li>Lower risk of data breaches</li>\n  <li>Easier compliance</li>\n  <li>Better performance and storage efficiency</li>\n</ul>\n\n<h3>Practical Example</h3>\n\n<p>You <b>should not</b> store a user's full date of birth if you only need to verify they are over 18.</p>\n\n<p>You <b>should</b> instead store a simple flag, such as <code>isAdult = true</code>.</p>",
+        "resources": [],
+        "nextNodeIds": ["Data", "Purpose", "Storage", "Quiz: Data Handling"]
+      },
+      "Safe": {
+        "id": "Safe",
+        "type": "Content",
+        "content": "<h3>Integrity & Confidentiality (Security)</h3>\n\n<p>You must protect personal data from:</p>\n\n<ul>\n  <li>Unauthorized access</li>\n  <li>Data leaks</li>\n  <li>Loss or corruption</li>\n</ul>\n\n<h3>Examples of good practices:</h3>\n\n<ul>\n  <li>Encrypt sensitive data</li>\n  <li>Use HTTPS</li>\n  <li>Hash passwords</li>\n  <li>Limit access (roles/permissions)</li>\n</ul>\n\n<p>If a system gets breached, developers are usually the ones being held responsible, so save yourself some trouble and learn how to protect personal data!</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Accurate": {
+        "id": "Accurate",
+        "type": "Content",
+        "content": "<h3>Accuracy</h3>\n\n<p>Personal data must be <b>correct</b> and <b>up-to-date</b>.</p>\n\n<p>When interacting with your system, users should be able to <b>update their data</b> or <b> fix any incorrect information</b>. </p>\n\n\n<h3>Practical example</h3>\n\n<p>If a user changes their email, but your system still sends emails to the old one, then you are violating this principle.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Liable": {
+        "id": "Liable",
+        "type": "Content",
+        "content": "<h3>Accountability</h3>\n\n<p>On top of having to follow GDPR regulation, you must also be able to <b>prove</b> that you do.</p>\n\n<p>This means:</p>\n\n<ul>\n  <li>Logging data processing activities</li>\n  <li>Documenting decisions</li>\n  <li>Having clear policies</li>\n</ul>\n\n<p>If someone audits your system, you should be able to explain every piece of data you store. If anything goes wrong or is not up to regulation, you could be held responsible!</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Data": {
+        "id": "Data",
+        "type": "Content",
+        "content": "<h3>Data Minimisation</h3>\n\n<p><b>Data minimisation</b> means you should only collect and store the data that is <b>strictly necessary</b> for a system/feature to function.</p>\n\n<h3>Practical Example</h3>\n\n<p><b>Bad design:</b></p>\n\n<pre><code>{\n  \"name\": \"John Doe\",\n  \"email\": \"john@email.com\",\n  \"phone\": \"+12345678\",\n  \"dateOfBirth\": \"1999-01-01\",\n  \"address\": \"Street 123\"\n}</code></pre>\n\n<p>For a simple account, most of this data is unnecessary.</p>\n\n<p><b>Better design:</b></p>\n\n<pre><code>{\n  \"email\": \"john@email.com\"\n}</code></pre>\n\n<p>As a rule of thumb, you should start minimal, and expand only when needed. The less data you have, the smaller the risk in case of a breach! As an added benefit, you also have a simpler system to manage!</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Purpose": {
+        "id": "Purpose",
+        "type": "Content",
+        "content": "<h3>Purpose Limitation</h3>\n\n<p>You must clearly define <b>why</b> you collect data. This also means that you cannot reuse it for something else later.</p>\n\n<h3>Practical Example</h3>\n\n<ul>\n  <li>User gives email for account &#8594 <b>OK</b></li>\n  <li>Using that email for marketing &#8594 <b>NOT OK</b> (without consent)</li>\n</ul>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Storage": {
+        "id": "Storage",
+        "type": "Content",
+        "content": "<h3>Storage Limitation</h3>\n\n<p>You cannot store personal data forever. Old data should be either deleted (if no longer required) or archived (if required by law)</p>\n\n<h3>Practical Example:</h3>\n\n<ul>\n  <li>Delete inactive accounts after X time</li>\n  <li>Automatically clean logs</li>\n</ul>\n",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Quiz: Core Principles": {
+        "id": "Quiz: Core Principles",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "Which GDPR principle states that you must have a valid legal reason to process personal data?",
+            "options": [
+              {
+                "text": "Data minimisation",
+                "isCorrect": false,
+                "explanation": "Incorrect. Data minimisation means only collecting what you need. Having a valid legal reason falls under the lawfulness principle."
+              },
+              {
+                "text": "Lawfulness",
+                "isCorrect": true,
+                "explanation": "Correct. Under Article 5(1)(a), personal data must be processed lawfully. This means you need a valid legal reason (lawful basis) before processing."
+              },
+              {
+                "text": "Accountability",
+                "isCorrect": false,
+                "explanation": "Incorrect. Accountability means being able to prove you comply with GDPR. Lawfulness is about having a valid legal reason."
+              },
+              {
+                "text": "Storage limitation",
+                "isCorrect": false,
+                "explanation": "Incorrect. Storage limitation is about not keeping data longer than needed."
+              }
+            ]
+          },
+          {
+            "question": "What does the accountability principle require?",
+            "options": [
+              {
+                "text": "You must follow GDPR and be able to prove it",
+                "isCorrect": true,
+                "explanation": "Correct. Article 5(2) states that the controller must be responsible for and be able to demonstrate compliance with all the other principles."
+              },
+              {
+                "text": "You must delete all data after 30 days",
+                "isCorrect": false,
+                "explanation": "Incorrect. There is no fixed 30-day rule in GDPR. The storage limitation principle says data should not be kept longer than necessary, but the period depends on the purpose."
+              },
+              {
+                "text": "You must ask users for consent before every action",
+                "isCorrect": false,
+                "explanation": "Incorrect. Consent is one of six lawful bases. Accountability is about proving you follow the rules, not about obtaining consent for every action."
+              }
+            ]
+          },
+          {
+            "question": "A system stores passwords in plain text. Which principle does this violate?",
+            "options": [
+              {
+                "text": "Data minimisation",
+                "isCorrect": false,
+                "explanation": "Incorrect. Data minimisation is about collecting only what you need. Storing passwords in plain text is a security issue."
+              },
+              {
+                "text": "Integrity and confidentiality",
+                "isCorrect": true,
+                "explanation": "Correct. Article 5(1)(f) requires that data is processed securely. Storing passwords in plain text fails to protect data from unauthorized access."
+              },
+              {
+                "text": "Purpose limitation",
+                "isCorrect": false,
+                "explanation": "Incorrect. Purpose limitation means data should only be used for the purpose it was collected for."
+              },
+              {
+                "text": "Accuracy",
+                "isCorrect": false,
+                "explanation": "Incorrect. Accuracy means keeping data correct and up-to-date. This is about security, not correctness."
+              }
+            ]
+          },
+          {
+            "question": "Under GDPR Article 5, how many core data protection principles are there?",
+            "options": [
+              {
+                "text": "5",
+                "isCorrect": false,
+                "explanation": "Incorrect. There are 7 principles: lawfulness/fairness/transparency, purpose limitation, data minimisation, accuracy, storage limitation, integrity/confidentiality, and accountability."
+              },
+              {
+                "text": "6",
+                "isCorrect": false,
+                "explanation": "Incorrect. There are 7 principles defined in Article 5."
+              },
+              {
+                "text": "7",
+                "isCorrect": true,
+                "explanation": "Correct. Article 5 defines 7 principles: lawfulness/fairness/transparency, purpose limitation, data minimisation, accuracy, storage limitation, integrity/confidentiality, and accountability."
+              },
+              {
+                "text": "8",
+                "isCorrect": false,
+                "explanation": "Incorrect. There are 7 principles in Article 5. You might be thinking of the 8 data subject rights."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      },
+      "Quiz: Data Handling": {
+        "id": "Quiz: Data Handling",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "A registration form asks for name, email, phone, home address and date of birth. The service only needs an email to function. Which principle is violated?",
+            "options": [
+              {
+                "text": "Accuracy",
+                "isCorrect": false,
+                "explanation": "Incorrect. Accuracy is about keeping data correct. The issue here is that too much data is being collected."
+              },
+              {
+                "text": "Data minimisation",
+                "isCorrect": true,
+                "explanation": "Correct. Article 5(1)(c) states that data must be limited to what is necessary. If only an email is needed, collecting phone, address and date of birth violates this principle."
+              },
+              {
+                "text": "Accountability",
+                "isCorrect": false,
+                "explanation": "Incorrect. Accountability is about proving compliance. The primary violation here is collecting unnecessary data."
+              },
+              {
+                "text": "Lawfulness",
+                "isCorrect": false,
+                "explanation": "Incorrect. Lawfulness is about having a legal reason to process data. The issue here is the amount of data collected."
+              }
+            ]
+          },
+          {
+            "question": "A user signs up with their email for an account. The company later uses that email to send marketing newsletters without asking. Which principle is violated?",
+            "options": [
+              {
+                "text": "Storage limitation",
+                "isCorrect": false,
+                "explanation": "Incorrect. Storage limitation is about how long data is kept. The issue here is that data is being used for a different purpose."
+              },
+              {
+                "text": "Integrity and confidentiality",
+                "isCorrect": false,
+                "explanation": "Incorrect. The data was not leaked or accessed without authorization. It was used for a different purpose."
+              },
+              {
+                "text": "Purpose limitation",
+                "isCorrect": true,
+                "explanation": "Correct. Article 5(1)(b) states that data must be collected for specified purposes and not used for anything incompatible. Using an account email for marketing without consent is a new purpose."
+              },
+              {
+                "text": "Accuracy",
+                "isCorrect": false,
+                "explanation": "Incorrect. The email address is accurate. The problem is that it is being used for an unrelated purpose."
+              }
+            ]
+          },
+          {
+            "question": "How long can you store personal data according to GDPR?",
+            "options": [
+              {
+                "text": "Forever, as long as the user agreed once",
+                "isCorrect": false,
+                "explanation": "Incorrect. Consent does not grant indefinite storage. The storage limitation principle still applies."
+              },
+              {
+                "text": "Only as long as necessary for the stated purpose",
+                "isCorrect": true,
+                "explanation": "Correct. Article 5(1)(e) states that data should be kept only as long as necessary for the purpose it was collected for. After that, it must be deleted or anonymized."
+              },
+              {
+                "text": "A maximum of 5 years",
+                "isCorrect": false,
+                "explanation": "Incorrect. GDPR does not define a fixed time limit. The retention period depends on the purpose and must be justified."
+              },
+              {
+                "text": "Until the user requests deletion",
+                "isCorrect": false,
+                "explanation": "Incorrect. While users have a right to erasure, you should not wait for a request. Data must be deleted when it is no longer needed."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Lawful Principles",
+    "description": "So you want to store data? Learn for which reasons you can!",
+    "startNodeId": "Lawful Bases",
+    "nodes": {
+      "Lawful Bases": {
+        "id": "Lawful Bases",
+        "type": "Content",
+        "content": "<h3>Lawful Bases</h3>\n\n<p>Before you store or process any personal data, you must answer one question: <b>\"Why am I allowed to do this?\"</b>. This justification is called a <b>lawful basis</b>.</p>\n\n<p>If you cannot clearly answer this, then you should probably not be collecting the data in the first place!</p>\n\n<p>There are <b>6 Lawful Bases</b> covered by the GDPR (which we will cover in the following lessons), but usually only one is needed to justify data collection!</p>",
+        "resources": [],
+        "nextNodeIds": ["Legal", "Public", "Vital", "Consent", "Contract", "Legitimate", "Quiz: Bases"]
+      },
+      "Legal": {
+        "id": "Legal",
+        "type": "Content",
+        "content": "<h3>Legal Obligation</h3>\n\n<p>You can process personal data if it is <b>necessary to comply with a legal obligation</b>.</p>\n\n<p>This means the law requires you to perform a task, and processing personal data is part of fulfilling that requirement.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>You receive an official request from law enforcement to provide specific personal data.</p>\n\n<p>&emsp; &#8594 You must comply and share the required data.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>You send employee salary information to the tax authority.</p>\n\n<p>&emsp; &#8594 This is required for tax law compliance.</p>\n\n\n<p><b>Important:</b></p>\n\n<p>You can only use this when a <b>specific law applies</b>, not as a general excuse.</p>\n",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Public": {
+        "id": "Public",
+        "type": "Content",
+        "content": "<h3>Public Interest</h3>\n\n<p>You can process personal data if it is necessary for a task carried out in the <b>public interest</b>. This usually applies to government or official institutions, not standard applications.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A government system processes citizen data for public services.</p>\n\n<p>&emsp; &#8594 This is required to provide those services.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>Health authorities track disease spread.</p>\n\n<p>&emsp; &#8594 This helps protect public health.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Vital": {
+        "id": "Vital",
+        "type": "Content",
+        "content": "<h3>Vital Interest</h3>\n\n<p>You can process personal data if it is necessary to <b>protect someone's life</b>. This only applies in emergency situations, rarely used in normal applications.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>Medical staff access patient data during an emergency when the patient is unconscious.</p>\n\n<p>&emsp; &#8594 The data is needed to provide treatment.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>Emergency services use stored health information.</p>\n\n<p>&emsp; &#8594 This can prevent serious harm.</p>\n",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Consent": {
+        "id": "Consent",
+        "type": "Content",
+        "content": "<h3>Consent</h3>\n\n<p>You can process personal data if the user has given <b>clear permission</b>. This is used when the feature is optional and the user has a real choice.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user signs up for a newsletter.</p>\n\n<p>&emsp; &#8594 They agree to receive emails.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user accepts tracking cookies for analytics.</p>\n\n<p>&emsp; &#8594 Data is collected based on their permission.</p>\n\n<p><b>Important:</b></p>\n\n<p>Users must be able to <b>withdraw consent at any time</b>!</p>",
+        "resources": [],
+        "nextNodeIds": ["How", "Privacy", "Quiz: Consent"]
+      },
+      "Contract": {
+        "id": "Contract",
+        "type": "Content",
+        "content": "<h3>Contractual Necessity</h3>\n\n<p>You can process personal data if it is <b>necessary to perform a contract</b> with the user. This means the data is required to deliver a service the user has requested.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>You store a user's email and password to allow login.</p>\n\n<p>&emsp; &#8594 Without this data, the account cannot function.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>You collect a shipping address for an online order.</p>\n\n<p>&emsp; &#8594 The product cannot be delivered without it.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Legitimate": {
+        "id": "Legitimate",
+        "type": "Content",
+        "content": "<h3>Legitimate Interest</h3>\n\n<p>You can process personal data if you have a <b>valid reason</b>, and it does not outweigh the user's rights.</p>\n\n<p>This requires a simple 3-step check.</p>\n\n<p><b>Step 1: Do you have a legitimate interest?</b></p>\n\n<p>&emsp; &#8594 It must be real, specific, and your own (e.g. security, fraud prevention).</p>\n\n<p><b>Step 2: Is the processing necessary?</b></p>\n\n<p>&emsp; &#8594 Can you achieve the same goal with less data?</p>\n\n<p><b>Step 3: Do your interests outweigh the user's rights?</b></p>\n\n<p>&emsp; &#8594 Would the user reasonably expect this?</p>\n\n<h3>Important</h3>\n\n<p>If any of these steps fail, you <b>cannot use this legal basis</b>.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>You log user activity to detect fraud or abuse.</p>\n\n<p>&emsp; &#8594 This helps protect your system.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>You monitor system usage to improve performance.</p>\n\n<p>&emsp; &#8594 This helps keep the application stable.</p>\n\n<p>This basis is flexible, but also the easiest to misuse.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "How": {
+        "id": "How",
+        "type": "Content",
+        "content": "<h3>Getting Consent</h3>\n\n<p>When you rely on consent, you must ask for it in a <b>clear and honest way</b>. Users should understand exactly what they are agreeing to.</p>\n\n<p><b>Be clear:</b></p>\n\n<p>&emsp; &#8594 Say what data you collect and why.</p>\n\n<p><b>Be specific:</b></p>\n\n<p>&emsp; &#8594 Separate different purposes (e.g. marketing vs. analytics).</p>\n\n<p><b>Give a real choice:</b></p>\n\n<p>&emsp; &#8594 No pre-checked boxes or forced consent.</p>\n\n<p><b>Allow withdrawal:</b></p>\n\n<p>&emsp; &#8594 Users must be able to change their mind.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user signs up for a newsletter using an unchecked checkbox.</p>\n\n<p>&emsp; &#8594 They actively choose to receive emails.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A cookie banner asks permission before tracking users.</p>\n\n<p>&emsp; &#8594 Tracking only starts after acceptance.</p>\n\n<h3>Important</h3>\n\n<p>If consent is not freely given, it is <b>not valid</b>!</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Privacy": {
+        "id": "Privacy",
+        "type": "Content",
+        "content": "<h3>Privacy Policy</h3>\n\n<p>A privacy policy explains <b>how and why</b> you process personal data. It must be <b>easy to find</b> and <b>easy to understand</b>.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A website provides a clear privacy page linked in the footer.</p>\n\n<p>&emsp; &#8594 Users can access it at any time.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>An app explains what data is collected during signup.</p>\n\n<p>&emsp; &#8594 Users are informed before using the service.</p>\n\n<h3>What to Include</h3>\n\n<ul>\n  <li>\n    <b>Data collected:</b> What personal data you store.\n  </li>\n  <li>\n    <b>Purpose:</b> Why you collect the data.\n  </li>\n  <li>\n    <b>Legal basis:</b> Why you are allowed to process it.\n  </li>\n  <li>\n    <b>User rights:</b> How users can access or delete their data.\n  </li>\n  <li>\n    <b>Contact info:</b> How users can reach you.\n  </li>\n</ul>\n\n<h3>Important</h3>\n\n<p>If users don't understand your policy, it is <b>not good enough</b>.</p>\n\n<p>Clarity is more important than legal complexity.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Quiz: Bases": {
+        "id": "Quiz: Bases",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "How many lawful bases does GDPR Article 6 define for processing personal data?",
+            "options": [
+              {
+                "text": "4",
+                "isCorrect": false,
+                "explanation": "Incorrect. Article 6 defines 6 lawful bases: consent, contract, legal obligation, vital interest, public interest and legitimate interest."
+              },
+              {
+                "text": "6",
+                "isCorrect": true,
+                "explanation": "Correct. Article 6 lists 6 lawful bases: consent, contract, legal obligation, vital interest, public interest and legitimate interest."
+              },
+              {
+                "text": "8",
+                "isCorrect": false,
+                "explanation": "Incorrect. There are 6 lawful bases. You may be thinking of the 8 data subject rights."
+              },
+              {
+                "text": "10",
+                "isCorrect": false,
+                "explanation": "Incorrect. Article 6 defines exactly 6 lawful bases."
+              }
+            ]
+          },
+          {
+            "question": "A hospital accesses a patient's medical records during an emergency when the patient is unconscious. Which lawful basis applies?",
+            "options": [
+              {
+                "text": "Consent",
+                "isCorrect": false,
+                "explanation": "Incorrect. The patient is unconscious and cannot give consent. A different basis must be used."
+              },
+              {
+                "text": "Vital interest",
+                "isCorrect": true,
+                "explanation": "Correct. Article 6(1)(d) allows processing when it is necessary to protect someone's life. This applies in emergency situations where the person cannot give consent."
+              },
+              {
+                "text": "Legitimate interest",
+                "isCorrect": false,
+                "explanation": "Incorrect. While a hospital has an interest in treating patients, the vital interest basis is the correct one for life-threatening emergencies."
+              },
+              {
+                "text": "Public interest",
+                "isCorrect": false,
+                "explanation": "Incorrect. Public interest applies to tasks carried out by public authorities. Treating an individual patient in an emergency falls under vital interest."
+              }
+            ]
+          },
+          {
+            "question": "An online store collects a shipping address to deliver an order. Which lawful basis applies?",
+            "options": [
+              {
+                "text": "Consent",
+                "isCorrect": false,
+                "explanation": "Incorrect. The address is required to fulfill the order. Since the user placed the order, this falls under contractual necessity rather than consent."
+              },
+              {
+                "text": "Contractual necessity",
+                "isCorrect": true,
+                "explanation": "Correct. Article 6(1)(b) allows processing that is necessary to perform a contract. The user requested a delivery, so collecting the shipping address is required to fulfill that contract."
+              },
+              {
+                "text": "Legal obligation",
+                "isCorrect": false,
+                "explanation": "Incorrect. No law requires collecting a shipping address. The basis here is the contract between the store and the customer."
+              },
+              {
+                "text": "Legitimate interest",
+                "isCorrect": false,
+                "explanation": "Incorrect. Since there is a direct contractual relationship, contractual necessity is the more appropriate basis."
+              }
+            ]
+          },
+          {
+            "question": "Is consent always required to process personal data?",
+            "options": [
+              {
+                "text": "Yes, consent is always mandatory",
+                "isCorrect": false,
+                "explanation": "Incorrect. Consent is one of six lawful bases. If another basis applies (like a contract or legal obligation), consent may not be needed."
+              },
+              {
+                "text": "No, there are 5 other lawful bases that can justify processing",
+                "isCorrect": true,
+                "explanation": "Correct. Consent is one option. GDPR also allows processing based on contract, legal obligation, vital interest, public interest or legitimate interest."
+              },
+              {
+                "text": "Only for special category data",
+                "isCorrect": false,
+                "explanation": "Incorrect. Special category data does require an Article 9 condition (which may include explicit consent), but regular personal data also needs a lawful basis. That basis does not have to be consent."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      },
+      "Quiz: Consent": {
+        "id": "Quiz: Consent",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "Which of the following is NOT valid consent under GDPR?",
+            "options": [
+              {
+                "text": "An unchecked checkbox the user actively selects",
+                "isCorrect": false,
+                "explanation": "Incorrect. An unchecked checkbox that the user actively selects is valid. It represents a clear, affirmative action."
+              },
+              {
+                "text": "A pre-checked checkbox that the user does not uncheck",
+                "isCorrect": true,
+                "explanation": "Correct. Recital 32 of the GDPR states that silence or pre-ticked boxes do not constitute consent. The user must take a clear affirmative action."
+              },
+              {
+                "text": "A user typing 'I agree' in a form field",
+                "isCorrect": false,
+                "explanation": "Incorrect. Typing 'I agree' is a clear affirmative action and can count as valid consent."
+              }
+            ]
+          },
+          {
+            "question": "What must a privacy policy include?",
+            "options": [
+              {
+                "text": "Only the company name",
+                "isCorrect": false,
+                "explanation": "Incorrect. GDPR Articles 13 and 14 require much more information in a privacy policy."
+              },
+              {
+                "text": "What data is collected, why, the legal basis, user rights and contact info",
+                "isCorrect": true,
+                "explanation": "Correct. Articles 13 and 14 require that you inform users about the data you collect, the purpose, the lawful basis, their rights and how to contact you."
+              },
+              {
+                "text": "A list of all employees who access user data",
+                "isCorrect": false,
+                "explanation": "Incorrect. You do not need to list individual employees. You do need to explain who the data controller is and provide contact details."
+              },
+              {
+                "text": "The company's annual revenue",
+                "isCorrect": false,
+                "explanation": "Incorrect. Revenue is not required in a privacy policy."
+              }
+            ]
+          },
+          {
+            "question": "A cookie banner starts tracking users before they click 'Accept'. Is this GDPR compliant?",
+            "options": [
+              {
+                "text": "Yes, because the banner is visible",
+                "isCorrect": false,
+                "explanation": "Incorrect. Showing a banner is not enough. Tracking before consent is given violates the consent requirement."
+              },
+              {
+                "text": "No, tracking can only start after the user gives consent",
+                "isCorrect": true,
+                "explanation": "Correct. Under GDPR, non-essential cookies require user consent before activation. Tracking before the user clicks 'Accept' means consent was never obtained."
+              },
+              {
+                "text": "It depends on the type of cookies",
+                "isCorrect": false,
+                "explanation": "Partially true but misleading. Strictly necessary cookies (like session cookies) do not need consent. However, analytics and tracking cookies always require consent first."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Privacy & Data Rights",
+    "description": "Now you have obtained user data. Learn what you can and cannot do with it!",
+    "startNodeId": "Rights",
+    "nodes": {
+      "Rights": {
+        "id": "Rights",
+        "type": "Content",
+        "content": "<h3>User Rights Overview</h3>\n\n<p>Under GDPR, users keep control over their personal data. This means your system must support a set of <b>user rights</b>.</p>\n\n<h3>The 8 Rights</h3>\n\n<ul>\n  <li>Right to be informed</li>\n  <li>Right of access</li>\n  <li>Right to rectification</li>\n  <li>Right to restriction</li>\n  <li>Right to object</li>\n  <li>Right to erasure</li>\n  <li>Right to data portability</li>\n  <li>Rights related to automated decision-making</li>\n</ul>\n\n<h3>Important</h3>\n\n<p>These are <b>not optional</b> features. Your system must support them, where applicable.</p>",
+        "resources": [],
+        "nextNodeIds": ["Inform", "Access", "Rectify", "Restrict", "Object", "Forget", "Portability", "Automate", "Quiz: User Rights"]
+      },
+      "Inform": {
+        "id": "Inform",
+        "type": "Content",
+        "content": "<h3>Right to be Informed</h3>\n\n<p>Users have the right to know <b>what data you collect and why</b>. This is usually done through a privacy policy.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>You explain data collection during sign-up, so users know what they agree to.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>You provide a clear 'privacy policy' page. This way, users can read it anytime.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Access": {
+        "id": "Access",
+        "type": "Content",
+        "content": "<h3>Right of Access</h3>\n\n<p>Users can request a copy of the personal data you store about them.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user downloads their account data.</p>\n\n<p>&emsp; &#8594 Data is provided in a readable format.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user asks what data is stored.</p>\n\n<p>&emsp; &#8594 You must provide the information.</p>\n\n<h3>Developer Implications</h3>\n\n<p>You must be able to locate and export user data from your system, so keep that in mind when design your system!</p>\n",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Rectify": {
+        "id": "Rectify",
+        "type": "Content",
+        "content": "<h3>Right to Rectification</h3>\n\n<p>Users can correct inaccurate/incomplete data.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user updates their email address.</p>\n\n<p>&emsp; &#8594 Stored data should be corrected.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user reports incorrect personal details.</p>\n\n<p>&emsp; &#8594 You should fix the data.</p>\n\n<h3>Important</h3>\n\n<p>Incorrect data is a compliance risk, so be careful to keep it accurate and up-to-date!</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Restrict": {
+        "id": "Restrict",
+        "type": "Content",
+        "content": "<h3>Right to Restriction</h3>\n\n<p>Users can ask you to <b>limit how their data is used</b>, instead of deleting it. This is often used when users want to keep their data, but stop certain processing.</p>\n\n<h3>When It Applies</h3>\n\n<ul>\n  <li>The user claims the data is incorrect</li>\n  <li>The processing is unlawful, but the user does not want deletion</li>\n  <li>You no longer need the data, but the user does</li>\n  <li>You are verifying a deletion or objection request</li>\n</ul>\n\n<h3>How to Implement</h3>\n\n<ul>\n  <li>Disable access to the data</li>\n  <li>Stop using it in features or processing</li>\n  <li>Temporarily hide or isolate the data</li>\n</ul>\n\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user disputes incorrect data.</p>\n\n<p>&emsp; &#8594 Processing is paused until it is verified.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user needs data for a legal claim.</p>\n\n<p>&emsp; &#8594 You keep the data, but stop using it.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Object": {
+        "id": "Object",
+        "type": "Content",
+        "content": "<h3>Right to Object</h3>\n\n<p>Users can object to certain types of data processing. This is common for situations such as marketing or tracking.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user opts out of marketing emails.</p>\n\n<p>&emsp; &#8594 You must stop sending them.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user objects to analytics tracking.</p>\n\n<p>&emsp; &#8594 Tracking must stop.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Forget": {
+        "id": "Forget",
+        "type": "Content",
+        "content": "<h3>Right to Erasure</h3>\n\n<p>Users can request that their personal data is deleted, also known as the <b>right to be forgotten</b>.</p>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user deletes their account.</p>\n\n<p>&emsp; &#8594 Their data is removed from your system.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user withdraws consent.</p>\n\n<p>&emsp; &#8594 Related data must be deleted.</p>\n\n<h3>Important</h3>\n\n<p>Deletion should be <b>complete</b> and <b>not reversible</b>.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Portability": {
+        "id": "Portability",
+        "type": "Content",
+        "content": "<h3>Right to Data Portability</h3>\n\n<p>Users can receive their data in a format that can be reused elsewhere, such as JSON or CSV.</p>\n\n<h3>When It Applies</h3>\n\n<ul>\n  <li>The data was provided by the user</li>\n  <li>The processing is based on consent or a contract</li>\n  <li>The data is processed automatically (i.e. not paper-based)</li>\n</ul>\n\n<h3>How to Implement</h3>\n\n<ul>\n  <li>Provide export formats (e.g. JSON, CSV)</li>\n  <li>Ensure data is structured and reusable</li>\n  <li>Allow users to download or transfer their data</li>\n</ul>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>A user downloads their data as JSON.</p>\n\n<p>&emsp; &#8594 It can be imported into another system.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A user requests their data to be sent to another provider.</p>\n\n<p>&emsp; &#8594 You transfer the data directly.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Automate": {
+        "id": "Automate",
+        "type": "Content",
+        "content": "<h3>Automated Decision-Making</h3>\n\n<p>Users have the right <b>not to be subject to fully automated decisions</b> that significantly affect them.</p>\n\n<p>This includes systems that use algorithms or AI to make important decisions.</p>\n\n<h3>When It Is Allowed</h3>\n\n<ul>\n  <li>It is required by law</li>\n  <li>It is necessary for a contract</li>\n  <li>The user has given explicit consent</li>\n</ul>\n\n<h3>What You Must Provide</h3>\n\n<ul>\n  <li>Clear information about how decisions are made</li>\n  <li>A way to request human review</li>\n  <li>A way to challenge the decision</li>\n</ul>\n\n<h3>Practical Examples</h3>\n\n<p><b>Example 1:</b></p>\n\n<p>An algorithm approves or rejects a loan application.</p>\n\n<p>&emsp; &#8594 This decision impacts the user directly.</p>\n\n<p><b>Example 2:</b></p>\n\n<p>A system profiles users to determine pricing or access.</p>\n\n<p>&emsp; &#8594 Users may be treated differently based on automation.</p>",
+        "resources": [],
+        "nextNodeIds": []
+      },
+      "Quiz: User Rights": {
+        "id": "Quiz: User Rights",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "How many data subject rights does the GDPR define?",
+            "options": [
+              {
+                "text": "5",
+                "isCorrect": false,
+                "explanation": "Incorrect. The GDPR defines 8 data subject rights, covered in Articles 12 through 22."
+              },
+              {
+                "text": "6",
+                "isCorrect": false,
+                "explanation": "Incorrect. There are 8 rights. You might be thinking of the 6 lawful bases from Article 6."
+              },
+              {
+                "text": "8",
+                "isCorrect": true,
+                "explanation": "Correct. The GDPR grants 8 rights: to be informed, access, rectification, erasure, restriction, portability, to object and rights related to automated decision-making."
+              },
+              {
+                "text": "10",
+                "isCorrect": false,
+                "explanation": "Incorrect. There are exactly 8 data subject rights."
+              }
+            ]
+          },
+          {
+            "question": "A user asks for a copy of all personal data you store about them. Which right are they exercising?",
+            "options": [
+              {
+                "text": "Right to erasure",
+                "isCorrect": false,
+                "explanation": "Incorrect. Erasure (Article 17) is about deleting data. Requesting a copy falls under a different right."
+              },
+              {
+                "text": "Right of access",
+                "isCorrect": true,
+                "explanation": "Correct. Article 15 gives users the right to obtain a copy of their personal data and information about how it is being processed."
+              },
+              {
+                "text": "Right to data portability",
+                "isCorrect": false,
+                "explanation": "Incorrect. Portability (Article 20) is about receiving data in a reusable format to transfer to another service. A general request for a copy of stored data is the right of access."
+              },
+              {
+                "text": "Right to rectification",
+                "isCorrect": false,
+                "explanation": "Incorrect. Rectification (Article 16) is about correcting inaccurate data."
+              }
+            ]
+          },
+          {
+            "question": "A user notices their email address is wrong in your system and asks you to fix it. Which right applies?",
+            "options": [
+              {
+                "text": "Right to erasure",
+                "isCorrect": false,
+                "explanation": "Incorrect. The user wants to correct their data, not delete it."
+              },
+              {
+                "text": "Right to restriction",
+                "isCorrect": false,
+                "explanation": "Incorrect. Restriction means limiting how data is used. The user wants to fix incorrect data."
+              },
+              {
+                "text": "Right to rectification",
+                "isCorrect": true,
+                "explanation": "Correct. Article 16 gives users the right to have inaccurate personal data corrected without undue delay."
+              },
+              {
+                "text": "Right to object",
+                "isCorrect": false,
+                "explanation": "Incorrect. The right to object is about stopping certain types of processing, not correcting data."
+              }
+            ]
+          },
+          {
+            "question": "Are GDPR user rights optional features that developers can choose to implement?",
+            "options": [
+              {
+                "text": "Yes, they are nice-to-have features",
+                "isCorrect": false,
+                "explanation": "Incorrect. GDPR rights are legal requirements. Failing to support them can lead to fines and legal action."
+              },
+              {
+                "text": "No, they are mandatory where applicable",
+                "isCorrect": true,
+                "explanation": "Correct. GDPR user rights are legally binding. Your system must support them where they apply."
+              },
+              {
+                "text": "Only the right to erasure is mandatory",
+                "isCorrect": false,
+                "explanation": "Incorrect. All 8 rights are mandatory where applicable, not just erasure."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": ["Quiz: Implementing User Rights"]
+      },
+      "Quiz: Implementing User Rights": {
+        "id": "Quiz: Implementing User Rights",
+        "type": "Quiz",
+        "resources": [],
+        "quiz": [
+          {
+            "question": "A user wants to download their data as JSON so they can switch to a competing service. Which right applies?",
+            "options": [
+              {
+                "text": "Right of access",
+                "isCorrect": false,
+                "explanation": "Incorrect. Access (Article 15) lets users get a copy of their data. Portability goes further by requiring a structured, machine-readable format for reuse elsewhere."
+              },
+              {
+                "text": "Right to data portability",
+                "isCorrect": true,
+                "explanation": "Correct. Article 20 gives users the right to receive their data in a structured, commonly used and machine-readable format. This allows them to transfer it to another service."
+              },
+              {
+                "text": "Right to restriction",
+                "isCorrect": false,
+                "explanation": "Incorrect. Restriction (Article 18) limits how data is used. It does not relate to exporting data."
+              },
+              {
+                "text": "Right to erasure",
+                "isCorrect": false,
+                "explanation": "Incorrect. Erasure is about deleting data, not exporting it."
+              }
+            ]
+          },
+          {
+            "question": "An algorithm automatically rejects a user's loan application. Under GDPR, what must you provide?",
+            "options": [
+              {
+                "text": "Nothing, automated decisions are always allowed",
+                "isCorrect": false,
+                "explanation": "Incorrect. Article 22 restricts fully automated decisions that significantly affect users. There are strict conditions on when this is allowed."
+              },
+              {
+                "text": "A way for the user to request human review",
+                "isCorrect": true,
+                "explanation": "Correct. Article 22 requires that you provide meaningful information about the logic involved and offer a way to request human intervention, express their point of view and contest the decision."
+              },
+              {
+                "text": "A full copy of the algorithm source code",
+                "isCorrect": false,
+                "explanation": "Incorrect. You do not need to share source code. You must provide meaningful information about the logic and allow human review."
+              },
+              {
+                "text": "An apology email",
+                "isCorrect": false,
+                "explanation": "Incorrect. An apology does not fulfill the requirements. Users have a right to human review and to contest the decision."
+              }
+            ]
+          },
+          {
+            "question": "A user objects to receiving marketing emails. What must you do?",
+            "options": [
+              {
+                "text": "Continue sending for 30 more days",
+                "isCorrect": false,
+                "explanation": "Incorrect. There is no grace period. When a user objects to direct marketing, you must stop immediately."
+              },
+              {
+                "text": "Stop sending marketing emails immediately",
+                "isCorrect": true,
+                "explanation": "Correct. Article 21(2) states that when a user objects to processing for direct marketing purposes, processing must stop. This is an absolute right with no exceptions."
+              },
+              {
+                "text": "Ask them to confirm three times before stopping",
+                "isCorrect": false,
+                "explanation": "Incorrect. You cannot add hurdles to make it harder for users to exercise their rights. One objection is enough."
+              },
+              {
+                "text": "Ignore the request if they signed up voluntarily",
+                "isCorrect": false,
+                "explanation": "Incorrect. Even if the user originally consented, they have the right to object at any time. You must respect it."
+              }
+            ]
+          },
+          {
+            "question": "A user disputes the accuracy of their data and asks you to pause processing until it is verified. Which right are they exercising?",
+            "options": [
+              {
+                "text": "Right to object",
+                "isCorrect": false,
+                "explanation": "Incorrect. Objecting (Article 21) is about stopping processing for specific reasons like marketing. This scenario is about pausing processing while data accuracy is being checked."
+              },
+              {
+                "text": "Right to restriction",
+                "isCorrect": true,
+                "explanation": "Correct. Article 18 gives users the right to restrict processing when they contest the accuracy of their data. You must pause processing until the data is verified."
+              },
+              {
+                "text": "Right to erasure",
+                "isCorrect": false,
+                "explanation": "Incorrect. The user is not asking for deletion. They want processing paused while accuracy is being verified."
+              },
+              {
+                "text": "Right to data portability",
+                "isCorrect": false,
+                "explanation": "Incorrect. Portability is about exporting data in a reusable format. It has nothing to do with pausing processing."
+              }
+            ]
+          }
+        ],
+        "nextNodeIds": []
+      }
+    }
+  }
+]

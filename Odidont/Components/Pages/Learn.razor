@@ -1,0 +1,82 @@
+﻿@page "/learn"
+@using Odidont.Components.Learn
+
+@inject NavigationManager Nav
+@inject Services.CheckStateService State
+
+@if (State.IsFinished)
+{
+    <div style="position: fixed; top: 70px; left: 20px; z-index: 9999;">
+        <button class="btn btn-warning shadow-lg fw-bold p-3" 
+                @onclick='() => Nav.NavigateTo("/check")'
+                style="border-radius: 15px; border: 2px solid #fff;">
+            <i class="bi bi-arrow-left-circle-fill"></i> Back to Results
+        </button>
+    </div>
+}
+
+<div class="d-flex flex-row">
+    <div class="col p-4 text-center">
+        @if (SelectedLesson != null)
+        {
+            <div class="fs-1">
+                @(SelectedLesson.Title)
+            </div>
+        }
+
+        @if (SelectedLessonNode != null)
+        {
+            <div class="fs-3 fst-italic">
+                @(SelectedLessonNode.Id)
+            </div>
+        }
+
+        @* @if (SelectedLesson != null) *@
+        @* { *@
+        @*     <hr/> *@
+        @* } *@
+    </div>
+</div>
+
+<div class="d-flex flex-row p-0 flex-fill">
+    <div class="d-flex flex-column flex-fill">
+        <div class="container-fluid">
+            @if (SelectedLesson == null)
+            {
+                <LessonSelection Lessons="Lessons" LessonChanged="LessonChangedCallback"/>
+            }
+            else if (SelectedLessonNode == null)
+            {
+                <LessonPath Lesson="SelectedLesson" LessonNodeChanged="LessonNodeChangedCallback"/>
+            }
+            else
+            {
+                <LessonNodeView Lesson="SelectedLesson" LessonNode="SelectedLessonNode" LessonNodeChanged="LessonNodeChangedCallback"/>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-row justify-content-between m-3">
+    @{
+        if (SelectedLessonNode != null)
+        {
+            <button class="btn btn-primary col-5 text-wrap order-1"
+                    type="button"
+                    @onclick="() => LessonNodeChangedCallback(null)">
+                <i class="bi bi-arrow-left"></i> Lesson Tree
+            </button>
+        }
+        else if (SelectedLesson != null)
+        {
+            <button class="btn btn-primary col-5 text-wrap order-2"
+                    type="button"
+                    @onclick="() => LessonChangedCallback(null)">
+                <i class="bi bi-arrow-bar-left"></i> Lessons
+            </button>
+        }
+    }
+    
+
+</div>
+

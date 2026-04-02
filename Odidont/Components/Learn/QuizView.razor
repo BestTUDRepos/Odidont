@@ -1,0 +1,36 @@
+﻿@inject NavigationManager NavigationManager
+
+<h2 class="text-center">@_currentQuiz?.Question</h2>
+
+    @if (_currentQuiz != null)
+    {
+        <div class="d-flex flex-column align-items-center">
+            @foreach (var option in _currentQuiz.Options)
+            {
+                <button class="btn btn-primary m-2"
+                        @onclick="() => Select(option)">
+                    @option.Text
+                </button>
+            }
+        </div>
+        
+        @if (_selectedOption != null)
+        {
+            <div class="my-4 text-center">
+                @if (_selectedOption.IsCorrect)
+                {
+                    <h4 class="text-success">Correct</h4>
+                }
+                else
+                {
+                    <h4 class="text-danger">Wrong</h4>
+                }
+                <p>@_selectedOption.Explanation</p>
+            </div>
+            <div class="mt-4 text-center">
+                <button class="btn btn-primary"
+                        @onclick="NextAsync">@(NextString())</button>
+            </div> 
+        }
+    }
+    

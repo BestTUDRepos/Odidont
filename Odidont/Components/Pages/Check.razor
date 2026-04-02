@@ -1,0 +1,47 @@
+﻿@page "/check"
+@using Odidont.Components.Check
+
+<div class="container">
+    @if (SelectedQuestion != null)
+    {
+        <CheckQuestionView
+            Question="SelectedQuestion"
+            OptionSelected="HandleOption"/>
+    }
+    else if (State.IsFinished)
+    {
+        <div class="text-center m-5">
+            @if (State.FoundIssues.Count > 0)
+            {
+                <h2 class="text-danger mb-4">Compliance Gaps Identified ✖️</h2>
+                <div class="list-group mb-4">
+                    @foreach (var issue in State.FoundIssues)
+                    {
+                        <div class="list-group-item list-group-item-action p-4 mb-2 shadow-sm rounded">
+                            <h5>@issue.Message</h5>
+                            @if (issue.LessonId != null)
+                            {
+                                <button class="btn btn-sm btn-outline-primary mt-2"
+                                        @onclick="() => GoToLesson(issue)">
+                                    Learn how to fix this
+                                </button>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                @* This solves the issue of never seeing a success message *@
+                <h2 class="text-success">You are GDPR compliant ✔️</h2>
+                <p class="fs-4">Excellent work! You are implementing Privacy-by-Design correctly.</p>
+            }
+
+            <div class="mt-4">
+                <button class="btn btn-secondary" @onclick="Restart">
+                    Restart Questionnaire
+                </button>
+            </div>
+        </div>
+    }
+</div>

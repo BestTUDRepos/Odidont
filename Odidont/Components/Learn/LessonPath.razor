@@ -1,0 +1,47 @@
+﻿@using Odidont.Models
+@code
+{
+    RenderFragment RenderNode(LessonNode node, HashSet<string> rendered, bool disabled)
+    {
+        return @<div class="d-flex flex-column flex-fill col-auto align-items-center text-center px-3 px-sm-3 px-md-3">
+                   <div class="d-flex align-self-center vr m-0 text-center" style="@DisabledPathStyle(disabled)"></div>
+                   <div class="d-flex flex-row row justify-content-center">
+                       <button class="btn btn-@(CompleteNode(node)) rounded-1 rounded-md-2 @DisabledNode(disabled) p-1 p-md-2"
+                               type="button" 
+                               @onclick="async () => await ChangeLessonNodeAsync(node)">
+                           <div class="fw-bold text-uppercase node-text">@(node.Id)</div>
+                       </button>
+                   </div>
+                   @if (node.Next.Count > 0)
+                   {
+                       <div class="d-flex align-self-center vr m-0 text-center" style="@CompletePathStyle(node)"></div>
+                       @if (node.Next.Count > 1)
+                       {
+                           <hr class="px-5 m-0 w-100 @CompletePathClass(node)">
+                       }
+                   }
+                   <div class="d-flex flex-row row justify-content-center">
+                       @foreach (var nextNode in node.Next)
+                       {
+                           if (!rendered.Contains(nextNode.Id))
+                           {
+                               rendered.Add(nextNode.Id);
+                               @RenderNode(nextNode, rendered, !node.Complete)
+                           }
+                           
+                       }
+                   </div>
+               </div>;
+    }
+}
+
+<div class="d-flex justify-content-center">
+    <div class="progress w-100 m-2 m-lg-5" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @Progress()%"></div>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    @RenderNode(Lesson.StartNode, new HashSet<string> { Lesson.StartNode.Id }, false)
+</div>
+
+

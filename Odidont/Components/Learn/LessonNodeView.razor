@@ -1,0 +1,27 @@
+﻿@using Odidont.Models
+
+<div class="col-lg-4 col-md-8 mx-auto mb-5">
+    @foreach (var resource in LessonNode.Resources)
+    {
+        <div class="bg-body-secondary rounded m-2">
+            <figure class="figure">
+                <img src="img/@resource" class="figure-img img-fluid rounded" alt="...">
+            </figure>
+        </div>
+    }
+
+    @switch (LessonNode.Type)
+    {
+        case LessonNode.LessonNodeType.Content:
+            <div class="mx-4">
+                @((MarkupString)LessonNode.Content)
+            </div>
+            break;
+        case LessonNode.LessonNodeType.Quiz when LessonNode.Quiz != null:
+            <QuizView Quiz="LessonNode.Quiz" LessonNodeChanged="ChangeLessonNodeAsync"/>
+            break;
+        default:
+            throw new ArgumentOutOfRangeException();
+    }
+
+</div>

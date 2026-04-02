@@ -1,0 +1,16 @@
+﻿@using Odidont.Models
+
+<h1 class="fs-1 text-center m-4">
+    @(Question.Text)
+</h1>
+
+<div class="row w-md-50 mx-5 mx-md-auto justify-content-between g-4 my-4">
+    @foreach (var option in Question.Options)
+    {
+        <button class="btn btn-primary p-4 col-auto text-wrap"
+                type="button"
+                @onclick="async () => await SelectOption(option)">
+            @option.Text
+        </button>
+    }
+</div>

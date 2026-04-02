@@ -1,0 +1,131 @@
+﻿{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Does your application collect any personal data (e.g., name, IP, or location)?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q2" },
+        { "text": "No", "resultId": "res_safe" }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Is the stored data limited to only the strictly necessary minimum?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q3" },
+        { "text": "No", "resultId": "res_minimization_fail", "nextQuestionId": "q3" }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Is there an automated cleanup process to delete data once it's no longer needed?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q4" },
+        { "text": "No", "resultId": "res_retention_fail", "nextQuestionId": "q4" }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Do you ensure data is not reused for marketing without new consent?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q5" },
+        { "text": "No", "resultId": "res_purpose_fail", "nextQuestionId": "q5" }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "Is sensitive data protected via encryption or strict access controls?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q6" },
+        { "text": "No", "resultId": "res_security_fail", "nextQuestionId": "q6" }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Can users download a copy of their data in a readable format?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q7" },
+        { "text": "No", "resultId": "res_access_fail", "nextQuestionId": "q7" }
+      ]
+    },
+    {
+      "id": "q7",
+      "text": "Does your system support a complete 'Right to Erasure' (to be forgotten)?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q8" },
+        { "text": "No", "resultId": "res_erasure_fail", "nextQuestionId": "q8" }
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "Does your application handle 'Special Category' data (e.g., health data)?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q9" },
+        { "text": "No" }
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "Is the consent mechanism clear, separate, and easy to withdraw?",
+      "options": [
+        { "text": "Yes", "nextQuestionId": "q10" },
+        { "text": "No", "resultId": "res_consent_fail", "nextQuestionId": "q10" }
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "Do you provide a technical way for users to rectify (fix) inaccurate data?",
+      "options": [
+        { "text": "Yes" },
+        { "text": "No", "resultId": "res_rectify_fail" }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "res_safe",
+      "message": "It appears GDPR may not apply to this project. Learn why IP addresses still count as personal data.",
+      "lessonId": 1, "lessonNodeId": "Personal Data"
+    },
+    {
+      "id": "res_minimization_fail",
+      "message": "Data Minimization Gap: You are storing more data than required.",
+      "lessonId": 2, "lessonNodeId": "Data"
+    },
+    {
+      "id": "res_retention_fail",
+      "message": "Storage Limitation Gap: Manual deletion processes are a compliance risk.",
+      "lessonId": 2, "lessonNodeId": "Storage"
+    },
+    {
+      "id": "res_purpose_fail",
+      "message": "Purpose Limitation Gap: Data is being reused without justification.",
+      "lessonId": 2, "lessonNodeId": "Purpose"
+    },
+    {
+      "id": "res_security_fail",
+      "message": "Security Gap: Data must be protected from unauthorized access.",
+      "lessonId": 2, "lessonNodeId": "Safe"
+    },
+    {
+      "id": "res_access_fail",
+      "message": "Access Right Gap: Missing a way for users to export their data.",
+      "lessonId": 4, "lessonNodeId": "Access"
+    },
+    {
+      "id": "res_erasure_fail",
+      "message": "Erasure Right Gap: Systems must support a technical 'Right to be Forgotten'.",
+      "lessonId": 4, "lessonNodeId": "Forget"
+    },
+    {
+      "id": "res_consent_fail",
+      "message": "Consent Gap: Bundled consent is invalid for sensitive data.",
+      "lessonId": 3, "lessonNodeId": "How"
+    },
+    {
+      "id": "res_rectify_fail",
+      "message": "Rectification Gap: Users cannot technically correct their information.",
+      "lessonId": 4, "lessonNodeId": "Rectify"
+    }
+  ]
+}
